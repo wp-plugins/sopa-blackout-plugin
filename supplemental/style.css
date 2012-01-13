@@ -1,0 +1,133 @@
+body{
+	background: #c6c8ca url('../images/body.png') top center repeat-y; 
+	font-family: Georgia, Palatino, "Palatino Linotype", "Book Antiqua", Times, "Times New Roman", serif;
+	font-size: 13px;
+	line-height: 18px;
+}
+.container_12{
+	background: #fff;
+	color: #231f20;
+	position: relative;
+}
+h1{
+	text-transform: uppercase;
+	font-weight: normal;
+	font-size: 60px;
+	line-height: 72px;
+	margin-top: 36px;
+
+}
+h2{
+	font-size: 24px;
+	line-height: 36px;
+	font-weight: normal;
+	padding-bottom: 12px;
+}
+a{
+	color: #9e0918;
+}
+p.banner{
+	font-size: 24px;
+	line-height: 36px;
+	border-top: 1px dotted #c6c8ca;
+	border-bottom: 1px dotted #c6c8ca;
+	padding-top: 35px;
+	padding-bottom: 35px;
+	margin-top: 36px;
+	margin-bottom: 24px;
+}
+p.banner b, p.banner a{
+	font-size: 18px;
+	line-height: 24px;
+}
+p.white{
+	margin-top: 36px;
+	margin-bottom: 24px;
+	font-size: 18px;
+	line-height: 36px;
+}
+p.white.censor{
+	margin-top: 48px;
+	font-size: 36px;
+	line-height: 48px;
+	position: absolute;
+	left: 0;
+}
+p.white.censor span{
+	color: #fff;
+	background: #231f20;
+}
+p.censor a.cta{
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 480px;
+	text-decoration: none;
+	text-align: center;
+	margin-top: 54px;
+	margin-left: -24px;
+	height: 120px;
+	width: 120px;
+	background: url('../images/cta.png');
+	-moz-border-radius: 99px;
+	-webkit-border-radius: 99px;
+	border-radius: 99px;
+}
+ p.censor a.cta:hover{
+	background: url('../images/cta_hover.png');
+}
+ p.censor a.cta span{
+	 display: none;
+}      
+.border_2{
+	float: left;
+	width: 940px;
+	margin-left: 10px;
+	margin-right: 10px;
+	border-bottom: 2px;
+	border-bottom: 2px solid #c6c8ca;
+	margin-top: -3px;
+	margin-bottom: 1px;
+}
+.trio{
+	border-top: 1px solid #c6c8ca;
+	border-bottom: 1px solid #c6c8ca;
+	margin-bottom: 36px;
+}
+.trio h2{
+	margin-left: -10px;
+	padding-top: 35px;
+	padding-right: 12px;	
+	padding-left: 23px;
+	border-left: 1px solid #c6c8ca;
+}
+.trio p{
+	margin-left: -10px;
+	font-family: Arial, sans-serif;
+	line-height: 24px;
+	padding-right: 12px;	
+	padding-left: 23px;
+	border-left: 1px solid #c6c8ca;    
+	padding-bottom: 35px;
+}
+.trio .alpha h2, .trio .alpha p{
+	border-left: 0;
+}
+.footer{
+	text-align: center;
+	font-size: 11px;
+	padding-top: 36px;
+	padding-bottom: 36px;
+	border-top: 1px dotted #c6c8ca;
+}
+.footer img{
+	margin: 0 10px;
+	padding: 10px;
+	background: #6d6e70;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+}
+.img{
+	line-height: 0;
+}
