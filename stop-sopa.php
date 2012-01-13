@@ -23,7 +23,7 @@ $continue_link .= '">' . __( 'Continue to site.' ) . '</a>';
 	</head>
 	<body>
 		<div class="container_12">
-			<h1 class="grid_12 img"><a href="http://downagainstsopa.com"><img src="<?php echo plugins_url( 'images/header.png', __FILE__ ) ?>" alt="Down Against SOPA" /></a><img src="<?php echo plugins_url( 'images/header2.png', __FILE__ ) ?>" alt="This Website is Down Today" /><a href="http://downagainstsopa.com/download.php"><img src="<?php echo plugins_url( 'images/header3.png', __FILE__ ) ?>" alt="Get the WordPress Plugin" /></a></h1>
+			<h1 class="grid_12 img"><a href="http://downagainstsopa.com"><img src="<?php echo plugins_url( 'images/header.png', __FILE__ ) ?>" alt="Down Against SOPA" /></a><img src="<?php echo plugins_url( 'images/header2.png', __FILE__ ) ?>" alt="This Website is Down Today" /><a href="http://wordpress.org/extend/plugins/sopa-blackout-plugin/"><img src="<?php echo plugins_url( 'images/header3.png', __FILE__ ) ?>" alt="Get the WordPress Plugin" /></a></h1>
 			<div class="clear"></div>
 
 			<p class="grid_8 white img"><img src="<?php echo plugins_url( 'images/capitol.jpg', __FILE__ ) ?>" alt="" /></p>
