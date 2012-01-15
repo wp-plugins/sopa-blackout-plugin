@@ -4,7 +4,7 @@ Donate link: http://www.sopawpblackout.com/
 Tags: soap, blackout, pipa, censorship, sopa
 Requires at least: 2.0.2
 Tested up to: 3.3.1
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 
 This plugin allows you to set SOPA blackout dates for your WordPress website. SEO friendly plus easy options to configure how often it's shown.
 
@@ -50,12 +50,17 @@ A. You bet! Take a look here for a demo http://www.wpsopaplugin.com/stop-sopa/
 
 * Added i18n to the Stop SOPA message page
 * Removed logos from footer
+* Removed Site5 link and replaced with link to BWB
+* Added nofollow to footer sponsor links
 
 = 1.0.2 =
 
 * Changed the link location for "Get the WordPress plugin" on the blackout page
 
 == Upgrade Notice ==
+
+= 1.0.3 =
+Removed logos from footer.
 
 = 1.0 =
 * Round 1 launch.

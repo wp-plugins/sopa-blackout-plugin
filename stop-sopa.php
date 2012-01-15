@@ -57,7 +57,7 @@ if ( empty( $sopa_opts['no_cookie'] ) ) {
 <?php
 if ( ! isset( $sopa_opts ) || 1 != $sopa_opts['backlinks'] ) {
 ?>
-			<p class="grid_12 footer"><a href="http://downagainstsopa.com"><?php _e( 'Down Against Sopa' , 'sopa-blackout-plugin') ?></a> <?php _e( 'sponsored by' , 'sopa-blackout-plugin') ?> <a href="http://www.staycuriousmyfriends.com/">bwb</a> &middot; <?php _e( 'Copyright' , 'sopa-blackout-plugin') ?> &copy; 2012 <a href="http://ctidd.com">Chris Tidd</a>; <a href="https://www.gnu.org/copyleft/gpl.html"><?php _e( 'code released under GPLv3' , 'sopa-blackout-plugin') ?></a> <?php _e( 'unless otherwise licensed.' , 'sopa-blackout-plugin') ?><br /><?php _e( 'WordPress Development by' , 'sopa-blackout-plugin') ?> <a href="http://ten-321.com/">Ten-321 Enterprises</a></p>
+			<p class="grid_12 footer"><a href="http://downagainstsopa.com"><?php _e( 'Down Against Sopa' , 'sopa-blackout-plugin') ?></a> <?php _e( 'sponsored by' , 'sopa-blackout-plugin') ?> <a href="http://www.staycuriousmyfriends.com/" rel="nofollow">bwb</a> &middot; <?php _e( 'Copyright' , 'sopa-blackout-plugin') ?> &copy; 2012 <a href="http://ctidd.com" rel="nofollow">Chris Tidd</a>; <a href="https://www.gnu.org/copyleft/gpl.html"><?php _e( 'code released under GPLv3' , 'sopa-blackout-plugin') ?></a> <?php _e( 'unless otherwise licensed.' , 'sopa-blackout-plugin') ?><br /><?php _e( 'WordPress Development by' , 'sopa-blackout-plugin') ?> <a href="http://ten-321.com/" rel="nofollow">Ten-321 Enterprises</a></p>
 <?php
 }
 ?>
