@@ -3,7 +3,7 @@
 Plugin Name: Down Against SOPA
 Plugin URI: http://downagainstsopa.com
 Description: Down Against Sopa displays a splash page on your WordPress site January 18 and 23 in protest of the Stop Online Piracy Act. Several configuration options are available.
-Version: 1.0.2
+Version: 1.0.3
 Author: Ten-321 Enterprises
 Author URI: http://ten-321.com
 License: GPL3
@@ -242,4 +242,9 @@ function remove_sopa_placeholder() {
 	delete_option( 'sopa_blackout_dates' );
 }
 register_deactivation_hook( __FILE__, 'remove_sopa_placeholder' );
+
+function load_down_sopa_textdomain() {
+	load_plugin_textdomain( 'sopa-blackout-plugin', false, 'sopa-blackout-plugin/languages' );
+}
+add_action( 'init', 'load_down_sopa_textdomain' );
 ?>

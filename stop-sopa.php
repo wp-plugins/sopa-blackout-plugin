@@ -57,7 +57,7 @@ if ( empty( $sopa_opts['no_cookie'] ) ) {
 <?php
 if ( ! isset( $sopa_opts ) || 1 != $sopa_opts['backlinks'] ) {
 ?>
-			<p class="grid_12 footer"><a href="http://downagainstsopa.com"><?php _e( 'Down Against Sopa' ) ?></a> <?php _e( 'sponsored by' ) ?> <a href="http://site5.com">Site5</a> &middot; <?php _e( 'Copyright' ) ?> &copy; 2012 <a href="http://ctidd.com">Chris Tidd</a>; <a href="https://www.gnu.org/copyleft/gpl.html"><?php _e( 'code released under GPLv3' ) ?></a> <?php _e( 'unless otherwise licensed.' ) ?><br /><?php _e( 'WordPress Development by' ) ?> <a href="http://ten-321.com/">Ten-321 Enterprises</a></p>
+			<p class="grid_12 footer"><a href="http://downagainstsopa.com"><?php _e( 'Down Against Sopa' ) ?></a> <?php _e( 'sponsored by' ) ?> <a href="http://www.staycuriousmyfriends.com/">bwb</a> &middot; <?php _e( 'Copyright' ) ?> &copy; 2012 <a href="http://ctidd.com">Chris Tidd</a>; <a href="https://www.gnu.org/copyleft/gpl.html"><?php _e( 'code released under GPLv3' ) ?></a> <?php _e( 'unless otherwise licensed.' ) ?><br /><?php _e( 'WordPress Development by' ) ?> <a href="http://ten-321.com/">Ten-321 Enterprises</a></p>
 <?php
 }
 ?>
