@@ -1,4 +1,4 @@
-=== SOPA Blackout Plugin ===
+7=== SOPA Blackout Plugin ===
 Contributors: Chris Tidd, cgrymala, benwb
 Donate link: http://www.sopawpblackout.com/
 Tags: soap, blackout, pipa, censorship, sopa
@@ -20,6 +20,7 @@ By default, this plugin will automatically redirect visitors from your site's ho
 4. Don't allow visitors to view the regular site when the SOPA message is active: - With the default configuration, this plugin sets a session cookie when a visitor sees the SOPA message, so that they won't see the message again until they close their browser. If you check this option, they will see the message every time they visit one of the affected pages, no matter how many times they've already seen it.
 5. Link to the following page with the "Continue to site" link - If the "Continue to site" link is displayed on the SOPA page (in certain configurations, it won't be), you can choose which page on your site that link leads to (for instance, if you have the plugin configured not to set a cookie, then you should point visitors to a page other than your home page, since they won't see your site if they try to visit the home page).
 6. Use the following page for the SOPA message: - By default, the plugin redirects to the actual PHP file that displays the SOPA message. You can choose to create a new page in WordPress to display the SOPA message, or choose to display the SOPA message in place of one of your existing pages.
+7. Show an admin notice about this plugin - you can choose to show a message with links to more info about SOPA all the time (as long as this plugin is activated) or to show a nag message just when the SOPA message is actively being shown to visitors. The nag message will always include information about how the plugin is configured, so you'll be aware of when visitors should see the message. You can also choose to turn off the nag message altogether.
 
 When you deactivate this plugin, all of its settings will be removed. In addition, if you chose to create a new page, this plugin will automatically delete that page.
 
@@ -52,6 +53,7 @@ A. You bet! Take a look here for a demo http://www.wpsopaplugin.com/stop-sopa/
 * Removed logos from footer
 * Removed Site5 link and replaced with link to BWB
 * Added nofollow to footer sponsor links
+* Added option to show nag message about this plugin
 
 = 1.0.2 =
 

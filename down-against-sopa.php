@@ -3,7 +3,7 @@
 Plugin Name: Down Against SOPA
 Plugin URI: http://downagainstsopa.com
 Description: Down Against Sopa displays a splash page on your WordPress site January 18 and 23 in protest of the Stop Online Piracy Act. Several configuration options are available.
-Version: 1.0.3
+Version: 1.0.4
 Author: Ten-321 Enterprises
 Author URI: http://ten-321.com
 License: GPL3
@@ -91,6 +91,7 @@ function get_sopa_options() {
 		'no_cookie'      => 0,
 		'page_id'        => null,
 		'site_link'      => null,
+		'nag'            => 1,
 	), $sopa_opts );
 	
 	return $sopa_opts;
@@ -126,6 +127,22 @@ function sanitize_sopa_opts( $input ) {
 	if ( empty( $input['page_id'] ) )
 		$input['page_id'] = sopa_create_blank_page();
 	$input['cookie_hash'] = md5( time() );
+	if ( array_key_exists( 'nag', $input ) ) {
+		switch ( $input['nag'] ) {
+			case 0:
+			case '0':
+			case '':
+				$input['nag'] = 0;
+				break;
+			case 2:
+			case '2':
+				$input['nag'] = 2;
+				break;
+			default:
+				$input['nag'] = 1;
+		}
+	} else {
+		$input['nag'] = 1;
 	
 	return $input;
 }
@@ -211,6 +228,13 @@ function sopa_options_field_callback() {
 ?>
     </select><br />
 <em><?php _e( 'This page will be used as a placeholder for the SOPA message. If anyone tries to visit a page that is supposed to redirect to the SOPA message, they will be redirected to the address of the page selected above, and the Stop SOPA message will be displayed there.</em></p><p><em>If you choose "Create a new page", a new blank page will automatically be created with a title of "Stop SOPA". That page will be excluded automatically from any calls to wp_list_pages() and will be automatically removed when the plugin is deactivated.' , 'sopa-blackout-plugin') ?></em></p>
+<p><label for="sopa_nag"><?php _e( 'Display an admin notice about this plugin?' ) ?></label><br/>
+	<select name="sopa_blackout_dates[nag]" id="sopa_nag" class="widefat">
+    	<option value="0"<?php selected( $sopa_opts['nag'], 0 ) ?>><?php _e( 'Never display an admin notice' , 'sopa-blackout-plugin' ) ?></option>
+        <option value="1"<?php selected( $sopa_opts['nag'], 1 ) ?>><?php _e( 'Display a notice only when the SOPA message is being displayed' , 'sopa-blackout-plugin' ) ?></option>
+        <option value="2"<?php selected( $sopa_opts['nag'], 2 ) ?>><?php _e( 'Display a notice the whole time this plugin is activated' , 'sopa-blackout-plugin' ) ?></option>
+    </select><br/>
+    <em><?php _e( 'The admin notice will include links to more information about SOPA to help you keep up with news about the bill. When the SOPA message is being displayed, the admin notice will indicate that, and will include information about when the SOPA message is displayed to visitors.' , 'sopa-blackout-plugin' ) ?></em></p>
 <?php
 }
 
