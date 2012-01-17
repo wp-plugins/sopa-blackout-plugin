@@ -51,7 +51,11 @@ A. You bet! Take a look here for a demo http://www.wpsopaplugin.com/stop-sopa/
 
 = 1.0.6 =
 
-* Added three new options (redirect to custom SOPA message, display admin notice about plugin, allow user to continue to original destination with "Continue to site" link)
+* New option: redirect to custom SOPA message
+* New option: display admin notice about plugin
+* New option: allow user to continue to original destination with "Continue to site" link
+* Reorganized options screen
+* Bugfix: Some options didn't save the first time you tried them
 
 = 1.0.5 =
 
@@ -70,6 +74,9 @@ A. You bet! Take a look here for a demo http://www.wpsopaplugin.com/stop-sopa/
 * Changed the link location for "Get the WordPress plugin" on the blackout page
 
 == Upgrade Notice ==
+
+= 1.0.6 =
+New options available to redirect to original destination, display admin notice while active and to use your own SOPA message
 
 = 1.0.5 =
 If you are running 1.0.3, no reason to update. If you updated to 1.0.4, this should fix the issue introduced by that version.
