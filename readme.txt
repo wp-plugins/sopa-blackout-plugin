@@ -4,7 +4,7 @@ Donate link: http://www.sopawpblackout.com/
 Tags: soap, blackout, pipa, censorship, sopa
 Requires at least: 2.0.2
 Tested up to: 3.3.1
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 
 This plugin allows you to set SOPA blackout dates for your WordPress website. SEO friendly plus easy options to configure how often it's shown.
 
@@ -37,7 +37,7 @@ To install the plugin:
 == Frequently Asked Questions ==
 
 Q. Are the redirects used SEO friendly?
-A. Yes they are temporary and SEO friendly.
+A. Yes, 307 status headers are sent with the redirects, which are temporary and SEO friendly.
 
 Q. Can I see an example of what the SOPA page looks like?
 A. You bet! Take a look here for a demo http://www.wpsopaplugin.com/stop-sopa/
@@ -46,7 +46,6 @@ A. You bet! Take a look here for a demo http://www.wpsopaplugin.com/stop-sopa/
 
 1. To view a screenshot of the admin panel please see: http://www.sopawpblackout.com/wordpress-plugin-for-sopa-protest/
 
-
 == Changelog ==
 
 = 1.0.6 =
@@ -54,8 +53,9 @@ A. You bet! Take a look here for a demo http://www.wpsopaplugin.com/stop-sopa/
 * New option: redirect to custom SOPA message
 * New option: display admin notice about plugin
 * New option: allow user to continue to original destination with "Continue to site" link
-* Reorganized options screen
 * Bugfix: Some options didn't save the first time you tried them
+* Reorganized options screen
+* Modified plugin to use WordPress time/date setting to determine current date, rather than server setting
 
 = 1.0.5 =
 
@@ -76,7 +76,7 @@ A. You bet! Take a look here for a demo http://www.wpsopaplugin.com/stop-sopa/
 == Upgrade Notice ==
 
 = 1.0.6 =
-New options available to redirect to original destination, display admin notice while active and to use your own SOPA message
+New options available to redirect to original destination, display admin notice while active and to use your own SOPA message. Plugin also uses WordPress time settings to determine the current date, rather than using server time.
 
 = 1.0.5 =
 If you are running 1.0.3, no reason to update. If you updated to 1.0.4, this should fix the issue introduced by that version.
