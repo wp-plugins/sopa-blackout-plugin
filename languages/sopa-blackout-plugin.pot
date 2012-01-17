@@ -1,0 +1,208 @@
+# Copyright (C) 2012 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version:  \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/sopa-blackout-plugin\n"
+"POT-Creation-Date: 2012-01-15 00:58:39+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2012-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: down-against-sopa.php:103 down-against-sopa.php:113
+#: down-against-sopa.php:155
+msgid "SOPA Blackout Options"
+msgstr ""
+
+#: down-against-sopa.php:103
+msgid "SOPA Options"
+msgstr ""
+
+#: down-against-sopa.php:114
+msgid "Blackout Options:"
+msgstr ""
+
+#: down-against-sopa.php:140 down-against-sopa.php:224
+#: down-against-sopa.php:239
+msgid "Stop SOPA"
+msgstr ""
+
+#: down-against-sopa.php:141
+msgid "This is a placeholder page for this website's Stop SOPA message."
+msgstr ""
+
+#: down-against-sopa.php:159
+msgid "Save Changes"
+msgstr ""
+
+#: down-against-sopa.php:169
+msgid ""
+"<p>Please choose the date(s) on which you would like the SOPA Blackout "
+"redirect to occur.</p>"
+msgstr ""
+
+#: down-against-sopa.php:170
+msgid ""
+"<p><em>Saving these options will reset all of the SOPA cookies, so visitors "
+"will see the SOPA message again even if they have already seen it.</em></p>"
+msgstr ""
+
+#: down-against-sopa.php:181
+msgid "Blackout dates:"
+msgstr ""
+
+#: down-against-sopa.php:183
+msgid ""
+"Please enter the dates in YYYY-MM-DD format. Separate multiple dates with "
+"commas."
+msgstr ""
+
+#: down-against-sopa.php:184
+msgid "Remove backlinks to plugin sponsors?"
+msgstr ""
+
+#: down-against-sopa.php:186
+msgid ""
+"Show the SOPA message to visitors the first time they visit your site, no "
+"matter which page they land on?"
+msgstr ""
+
+#: down-against-sopa.php:188
+msgid ""
+"By default, only the front page and posts \"home\" page show the SOPA "
+"message. If a visitor lands on an internal page, they won't see the SOPA "
+"message until they visit the home or front page. Check the box above to "
+"replace all pages on your site with the message."
+msgstr ""
+
+#: down-against-sopa.php:188
+msgid ""
+"If you have the option above checked, but do not check the option below, "
+"visitors will only see the message once. Once they click through to visit "
+"your site, they will no longer see the SOPA message."
+msgstr ""
+
+#: down-against-sopa.php:189
+msgid ""
+"Don't allow visitors to view the regular site when the SOPA message is "
+"active:"
+msgstr ""
+
+#: down-against-sopa.php:191
+msgid ""
+"By default, after a visitor has seen the SOPA message, all other visits to "
+"your site (including clicking the \"Continue to site\" link) will show the "
+"regular content. If you check the box above, they will see the SOPA message "
+"every time they visit your site (as long as it's active)."
+msgstr ""
+
+#: down-against-sopa.php:192
+msgid "Link to the following page with the \"Continue to site\" link"
+msgstr ""
+
+#: down-against-sopa.php:201
+msgid "Use the following page for the SOPA message:"
+msgstr ""
+
+#: down-against-sopa.php:213
+msgid ""
+"This page will be used as a placeholder for the SOPA message. If anyone "
+"tries to visit a page that is supposed to redirect to the SOPA message, they "
+"will be redirected to the address of the page selected above, and the Stop "
+"SOPA message will be displayed there.</em></p><p><em>If you choose \"Create "
+"a new page\", a new blank page will automatically be created with a title of "
+"\"Stop SOPA\". That page will be excluded automatically from any calls to "
+"wp_list_pages() and will be automatically removed when the plugin is "
+"deactivated."
+msgstr ""
+
+#: stop-sopa.php:12
+msgid "Continue to site."
+msgstr ""
+
+#: stop-sopa.php:26
+msgid "Down Against SOPA"
+msgstr ""
+
+#: stop-sopa.php:26
+msgid "Get the WordPress Plugin"
+msgstr ""
+
+#: stop-sopa.php:30
+msgid "If Congress passes SOPA, the Internet will be permanently censored."
+msgstr ""
+
+#: stop-sopa.php:30
+msgid "Take Action Now"
+msgstr ""
+
+#: stop-sopa.php:31
+msgid ""
+"Congress is about to vote on the Stop Online Piracy Act (SOPA). If passed, "
+"this bill will allow the United States government to censor the Internet. "
+"<br /><a href=\"%s\">Join the fight against it!</a>"
+msgstr ""
+
+#: stop-sopa.php:44
+msgid "Misdirected Legislation"
+msgstr ""
+
+#: stop-sopa.php:45
+msgid ""
+"Although SOPA advocates claim it targets foreign pirates, <a href=\"%s\">the "
+"Electronic Frontier Foundation reports</a> that &ldquo;broad definitions and "
+"vague language&rdquo; allow the bill to shut down legitimate US websites "
+"without due process. Among these sites: Etsy, Flickr, and Vimeo."
+msgstr ""
+
+#: stop-sopa.php:48
+msgid "Uninformed Support"
+msgstr ""
+
+#: stop-sopa.php:49
+msgid ""
+"SOPA supporters in Congress actively avoided feedback from <a href=\"%s"
+"\">public interest groups</a>, Internet <a href=\"%s\">investors</a> and "
+"professionals, <a href=\"%s\">technology companies</a>, and <a href=\"%s"
+"\">independent artists</a>. They were too busy listening to lobbyists to "
+"hear the widespread outrage over the bill&rsquo;s many flaws."
+msgstr ""
+
+#: stop-sopa.php:52
+msgid "What You Can Do"
+msgstr ""
+
+#: stop-sopa.php:53
+msgid ""
+"It is crucial that we demonstrate our opposition. Let Congress know you "
+"oppose SOPA. <a href=\"%s\">Look up your senators&rsquo; numbers</a> and "
+"call them. Or <a href=\"%s\">send a message</a> announcing your opposition. "
+"Working together, we can protect your First Ammendment rights."
+msgstr ""
+
+#: stop-sopa.php:60
+msgid "Down Against Sopa"
+msgstr ""
+
+#: stop-sopa.php:60
+msgid "sponsored by"
+msgstr ""
+
+#: stop-sopa.php:60
+msgid "Copyright"
+msgstr ""
+
+#: stop-sopa.php:60
+msgid "code released under GPLv3"
+msgstr ""
+
+#: stop-sopa.php:60
+msgid "unless otherwise licensed."
+msgstr ""
+
+#: stop-sopa.php:60
+msgid "WordPress Development by"
+msgstr ""
