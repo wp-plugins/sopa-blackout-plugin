@@ -355,7 +355,7 @@ function sopa_admin_nag() {
 		$msg = sprintf( __( 'The SOPA Blackout Plugin (Down Against SOPA) is activated on your site. It is currently set up to show the SOPA message to visitors of %s on %s to your site during the following dates: %s.' , 'sopa-blackout-plugin' ), $pages, $visits, $blackout_dates );
 	}
 	
-	printf( __( '<div class="updated fade"><p>%s</p><p>For more current SOPA information, please feel free to visit <a href="%s">the Down Against SOPA</a> website.</p></div>', 'sopa-blackout-plugin' ), $msg, 'http://downagainstsopa.com/' );
+	printf( __( '<div class="updated fade"><p>%s</p><p>For more current SOPA information, please feel free to visit <a href="%s">the Down Against SOPA</a> website.</p></div>', 'sopa-blackout-plugin' ), $msg, 'http://www.sopawpblackout.com/' );
 }
 add_action( 'admin_notices', 'sopa_admin_nag' );
 ?>
