@@ -21,6 +21,8 @@ By default, this plugin will automatically redirect visitors from your site's ho
 5. Link to the following page with the "Continue to site" link - If the "Continue to site" link is displayed on the SOPA page (in certain configurations, it won't be), you can choose which page on your site that link leads to (for instance, if you have the plugin configured not to set a cookie, then you should point visitors to a page other than your home page, since they won't see your site if they try to visit the home page).
 6. Use the following page for the SOPA message: - By default, the plugin redirects to the actual PHP file that displays the SOPA message. You can choose to create a new page in WordPress to display the SOPA message, or choose to display the SOPA message in place of one of your existing pages.
 7. Show an admin notice about this plugin - you can choose to show a message with links to more info about SOPA all the time (as long as this plugin is activated) or to show a nag message just when the SOPA message is actively being shown to visitors. The nag message will always include information about how the plugin is configured, so you'll be aware of when visitors should see the message. You can also choose to turn off the nag message altogether.
+8. Make the "Continue to site" link lead to the visitor's original destination, instead of the page indicated above? - If you have the cookie enabled (default setting) so that visitors can continue through to your site after viewing the SOPA message, you can check this option to allow them to continue through to the page they originally tried to visit. Otherwise, they will be redirected to the page you chose in option #5 above (your home page by default).
+9. Use the following page as a custom SOPA message instead of the one included in this plugin? - If you already have your own SOPA message set up within your site, you can choose it from the dropdown for this option, and the plugin will redirect to it instead of displaying the SOPA message that's included with this plugin.
 
 When you deactivate this plugin, all of its settings will be removed. In addition, if you chose to create a new page, this plugin will automatically delete that page.
 
@@ -46,6 +48,10 @@ A. You bet! Take a look here for a demo http://www.wpsopaplugin.com/stop-sopa/
 
 
 == Changelog ==
+
+= 1.0.6 =
+
+* Added three new options (redirect to custom SOPA message, display admin notice about plugin, allow user to continue to original destination with "Continue to site" link)
 
 = 1.0.5 =
 

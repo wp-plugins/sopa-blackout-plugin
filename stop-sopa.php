@@ -4,7 +4,9 @@ if ( ! isset( $sopa_opts ) ) {
 	$sopa_opts = get_sopa_options();
 }
 $continue_link = '<br /> <a style="background: #9e0918; color: #fff;" href="';
-if ( empty( $sopa_opts['site_link'] ) ) { 
+if ( ! empty( $sopa_opts['continue_to_dest'] ) && isset( $_GET['redirect_to'] ) ) {
+	$continue_link .= $_GET['redirect_to'];
+} else if ( empty( $sopa_opts['site_link'] ) ) { 
 	$continue_link .= get_bloginfo( 'siteurl' ); 
 } else { 
 	$continue_link .= get_permalink( $sopa_opts['site_link'] );

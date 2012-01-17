@@ -3,7 +3,7 @@
 Plugin Name: Down Against SOPA
 Plugin URI: http://downagainstsopa.com
 Description: Down Against Sopa displays a splash page on your WordPress site January 18 and 23 in protest of the Stop Online Piracy Act. Several configuration options are available.
-Version: 1.0.4
+Version: 1.0.6
 Author: Ten-321 Enterprises
 Author URI: http://ten-321.com
 License: GPL3
@@ -32,9 +32,12 @@ function sopa_redirect() {
 	/* Don't redirect if this is the admin area - somewhat redundant, but helpful nonetheless */
 	if ( is_admin() )
 		return;
-		
+	
 	$sopa_opts = get_sopa_options();
 	$blackout_dates = array_map( 'trim', explode( ',', $sopa_opts['blackout_dates'] ) );
+	
+	if ( ! empty( $sopa_opts['custom_page'] ) && is_page( $sopa_opts['custom_page'] ) )
+		return;
 	
 	$cookiename = 'seen_sopa_blackout';
 	if ( array_key_exists( 'cookie_hash', $sopa_opts ) )
@@ -54,22 +57,27 @@ function sopa_redirect() {
 	}
 	
 	// On January 23, 2012 redirect traffic to the protest page.
-	if ( in_array( date( 'Y-m-d' ), $blackout_dates ) ) {
+	if ( is_sopa_message_displayed() ) {
+		$qs = ! empty( $sopa_opts['continue_to_dest'] ) ? '?redirect_to=' . urlencode( $_SERVER['REQUEST_URI'] ) : '';
 		$cookiename = 'seen_sopa_blackout';
 		if ( array_key_exists( 'cookie_hash', $sopa_opts ) )
 			$cookiename .= '_' . $sopa_opts['cookie_hash'];
 		// Meta refresh is the only redirect technique I found consistent enough. It has drawbacks, but it's reliable and simple.
 		/*wp_safe_redirect( plugins_url( 'stop-sopa.php', __FILE__ ) );*/
-		if ( empty( $sopa_opts['page_id'] ) || ! is_numeric( $sopa_opts['page_id'] ) ) {
+		if ( empty( $sopa_opts['custom_page'] ) && ( empty( $sopa_opts['page_id'] ) || ! is_numeric( $sopa_opts['page_id'] ) ) ) {
 			if ( empty( $sopa_opts['no_cookie'] ) )
 				setcookie( $cookiename, 1, 0, '/' );
-			wp_safe_redirect( plugins_url( 'stop-sopa.php', __FILE__ ), 307 );
+			wp_safe_redirect( plugins_url( 'stop-sopa.php', __FILE__ ) . $qs, 307 );
+		} else if ( ! empty( $sopa_opts['custom_page'] ) ) {
+			if ( empty( $sopa_opts['no_cookie'] ) )
+				setcookie( $cookiename, 1, 0, '/' );
+			wp_safe_redirect( get_permalink( $sopa_opts['custom_page'] ) . $qs, 307 );
 		} else if ( is_page( $sopa_opts['page_id'] ) ) {
 			if ( empty( $sopa_opts['no_cookie'] ) )
 				setcookie( $cookiename, 1, 0, '/' );
 			include_once( plugin_dir_path( __FILE__ ) . 'stop-sopa.php' );
 		} else {
-			wp_safe_redirect( get_permalink( $sopa_opts['page_id'] ), 307 );
+			wp_safe_redirect( get_permalink( $sopa_opts['page_id'] ) . $qs, 307 );
 		}
 		die();
 	}
@@ -92,9 +100,23 @@ function get_sopa_options() {
 		'page_id'        => null,
 		'site_link'      => null,
 		'nag'            => 1,
+		'continue_to_dest' => 0,
+		'custom_page'    => 0,
 	), $sopa_opts );
 	
 	return $sopa_opts;
+}
+
+/**
+ * Determine whether the blackout dates indicate the SOPA message should be displayed
+ * @return bool whether or not the current date is in the list of blackout dates
+ */
+function is_sopa_message_displayed() {
+	$sopa_opts = get_sopa_options();
+	$blackout_dates = array_map( 'trim', explode( ',', $sopa_opts['blackout_dates'] ) );
+	
+	$time = @date( "Y-m-d", current_time( 'timestamp' ) );
+	return in_array( $time, $blackout_dates );
 }
 
 /**
@@ -124,8 +146,12 @@ function sanitize_sopa_opts( $input ) {
 	$input['backlinks'] = array_key_exists( 'backlinks', $input ) && '1' === $input['backlinks'] ? 1 : 0;
 	$input['all_pages'] = array_key_exists( 'all_pages', $input ) && '1' === $input['all_pages'] ? 1 : 0;
 	$input['no_cookie'] = array_key_exists( 'no_cookie', $input ) && '1' === $input['no_cookie'] ? 1 : 0;
+	$input['continue_to_dest'] = array_key_exists( 'continue_to_dest', $input ) && '1' === $input['continue_to_dest'] ? 1 : 0;
 	if ( empty( $input['page_id'] ) )
 		$input['page_id'] = sopa_create_blank_page();
+	if ( empty( $input['custom_page'] ) )
+		$input['custom_page'] = 0;
+	
 	$input['cookie_hash'] = md5( time() );
 	if ( array_key_exists( 'nag', $input ) ) {
 		switch ( $input['nag'] ) {
@@ -143,6 +169,7 @@ function sanitize_sopa_opts( $input ) {
 		}
 	} else {
 		$input['nag'] = 1;
+	}
 	
 	return $input;
 }
@@ -153,7 +180,7 @@ function sanitize_sopa_opts( $input ) {
 function sopa_create_blank_page() {
 	return wp_insert_post( array( 
 		'comment_status' => 'closed',
-		'pint_status'    => 'closed',
+		'ping_status'    => 'closed',
 		'post_title'     => __( 'Stop SOPA' , 'sopa-blackout-plugin'),
 		'post_content'   => __( 'This is a placeholder page for this website\'s Stop SOPA message.' , 'sopa-blackout-plugin'),
 		'post_type'      => 'page',
@@ -228,13 +255,25 @@ function sopa_options_field_callback() {
 ?>
     </select><br />
 <em><?php _e( 'This page will be used as a placeholder for the SOPA message. If anyone tries to visit a page that is supposed to redirect to the SOPA message, they will be redirected to the address of the page selected above, and the Stop SOPA message will be displayed there.</em></p><p><em>If you choose "Create a new page", a new blank page will automatically be created with a title of "Stop SOPA". That page will be excluded automatically from any calls to wp_list_pages() and will be automatically removed when the plugin is deactivated.' , 'sopa-blackout-plugin') ?></em></p>
-<p><label for="sopa_nag"><?php _e( 'Display an admin notice about this plugin?' ) ?></label><br/>
+<p><label for="sopa_nag"><strong><?php _e( 'Display an admin notice about this plugin?' ) ?></strong></label><br/>
 	<select name="sopa_blackout_dates[nag]" id="sopa_nag" class="widefat">
     	<option value="0"<?php selected( $sopa_opts['nag'], 0 ) ?>><?php _e( 'Never display an admin notice' , 'sopa-blackout-plugin' ) ?></option>
         <option value="1"<?php selected( $sopa_opts['nag'], 1 ) ?>><?php _e( 'Display a notice only when the SOPA message is being displayed' , 'sopa-blackout-plugin' ) ?></option>
         <option value="2"<?php selected( $sopa_opts['nag'], 2 ) ?>><?php _e( 'Display a notice the whole time this plugin is activated' , 'sopa-blackout-plugin' ) ?></option>
     </select><br/>
     <em><?php _e( 'The admin notice will include links to more information about SOPA to help you keep up with news about the bill. When the SOPA message is being displayed, the admin notice will indicate that, and will include information about when the SOPA message is displayed to visitors.' , 'sopa-blackout-plugin' ) ?></em></p>
+<p><label for="continue_to_dest"><strong><?php _e( 'Make the "Continue to site" link lead to the visitor\'s original destination, instead of the page indicated above?' , 'sopa-blackout-plugin' ) ?></strong></label>
+	<input type="checkbox" name="sopa_blackout_dates[continue_to_dest]" id="continue_to_dest" value="1"<?php checked( $sopa_opts['continue_to_dest'], 1 ) ?>/></p>
+<p><label for="sopa_custom_page"><strong><?php _e( 'Use the following page as a custom SOPA message instead of the one included in this plugin?', 'sopa-blackout-plugin' ) ?></strong></label><br/>
+<?php
+	wp_dropdown_pages( array(
+		'name'             => 'sopa_blackout_dates[custom_page]',
+		'echo'             => 1,
+		'show_option_none' => 'Use the included SOPA message',
+		'selected'         => $sopa_opts['custom_page'],
+	) );
+?>
+</p>
 <?php
 }
 
@@ -271,4 +310,52 @@ function load_down_sopa_textdomain() {
 	load_plugin_textdomain( 'sopa-blackout-plugin', false, 'sopa-blackout-plugin/languages' );
 }
 add_action( 'init', 'load_down_sopa_textdomain' );
+
+/**
+ * Display the admin notice if the options indicate to do so
+ */
+function sopa_admin_nag() {
+	$sopa_opts = get_sopa_options();
+	
+	if ( empty( $sopa_opts['nag'] ) )
+		return;
+	
+	$pages = empty( $sopa_opts['all_pages'] ) ? 'your home page' : 'all pages on your site';
+	$visits = empty( $sopa_opts['no_cookie'] ) ? 'their first visit' : 'all visits';
+	
+	if ( 1 == $sopa_opts['nag'] ) {
+		if ( ! is_sopa_message_displayed() )
+			return;
+		
+		$msg = sprintf( __( 'The SOPA message is currently being displayed to visitors of %s on %s to your site.' , 'sopa-blackout-plugin' ), $pages, $visits );
+	} else {
+		$blackout_dates = array_map( 'trim', explode( ',', $sopa_opts['blackout_dates'] ) );
+		sort( $blackout_dates );
+		$dates = array();
+		$form = get_option( 'date_format' );
+		foreach ( $blackout_dates as $d ) {
+			if ( ! strtotime( $d ) )
+				continue;
+			$dates[] = date( $form, strtotime( $d ) );
+		}
+		switch ( count( $dates ) ) {
+			case 0:
+				$blackout_dates = '[no dates specified]';
+				break;
+			case 1:
+				$blackout_dates = implode( ', ', $dates );
+				break;
+			case 2:
+				$blackout_dates = implode( ' and ', $dates );
+				break;
+			default:
+				$last_date = array_pop( $dates );
+				$blackout_dates = implode( ', ', $dates ) . ' and ' . $last_date;
+		}
+		$msg = sprintf( __( 'The SOPA Blackout Plugin (Down Against SOPA) is activated on your site. It is currently set up to show the SOPA message to visitors of %s on %s to your site during the following dates: %s.' , 'sopa-blackout-plugin' ), $pages, $visits, $blackout_dates );
+	}
+	
+	printf( __( '<div class="updated fade"><p>%s</p><p>For more current SOPA information, please feel free to visit <a href="%s">the Down Against SOPA</a> website.</p></div>', 'sopa-blackout-plugin' ), $msg, 'http://downagainstsopa.com/' );
+}
+add_action( 'admin_notices', 'sopa_admin_nag' );
 ?>
